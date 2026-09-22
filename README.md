@@ -100,6 +100,3 @@ Do not claim the prototype has achieved the exact percentages reported in the pa
 
 This is an academic/research prototype. Its predictions are not medical diagnoses and should not be used to make real clinical decisions or delay emergency care.
 
-## Suggested GitHub description
-
-> AI-assisted intelligent ambulance research prototype combining patient-data machine learning, model comparison, and a hospital-style web dashboard using Python, Flask and scikit-learn.
