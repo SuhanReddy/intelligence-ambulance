@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intelligent Ambulance | AI Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div><span class="pulse">●</span> Intelligent Ambulance</div>
+  <span class="tag">AI & Human Interaction Research Project</span>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">EMERGENCY MEDICAL SUPPORT — RESEARCH PROTOTYPE</p>
+      <h1>AI-assisted patient condition analysis</h1>
+      <p>Train and compare SVM, Random Forest and KNN models, then send patient measurements through a simple hospital-style dashboard.</p>
+    </div>
+  </section>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <div class="grid">
+    <section class="card">
+      <h2>1. Train AI models</h2>
+      <p class="muted">Upload the CSV used for your project. The app automatically detects a common target column such as <code>target</code>.</p>
+      <form action="{{ url_for('train') }}" method="post" enctype="multipart/form-data">
+        <label>Dataset (.csv)</label>
+        <input type="file" name="dataset" accept=".csv" required>
+        <button type="submit">Train & Evaluate</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>2. Patient prediction</h2>
+      {% if bundle %}
+        <p class="muted">Dataset: <b>{{ bundle.dataset }}</b><br>Target: <b>{{ bundle.target }}</b></p>
+        <form action="{{ url_for('predict') }}" method="post" class="feature-grid">
+          {% for feature in bundle.features %}
+            <label>
+              {{ feature }}
+              <input name="{{ feature }}" type="number" step="any" required>
+            </label>
+          {% endfor %}
+          <button class="wide" type="submit">Analyze Patient Data</button>
+        </form>
+      {% else %}
+        <p class="muted">Train the models first. The patient form will appear here automatically.</p>
+      {% endif %}
+    </section>
+  </div>
+
+  {% if bundle %}
+  <section class="card">
+    <h2>Model comparison</h2>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+        {% for name, metrics in bundle.results.items() %}
+        <tr><td>{{ name }}</td><td>{{ metrics.accuracy }}%</td><td>{{ metrics.precision }}%</td><td>{{ metrics.recall }}%</td><td>{{ metrics.f1 }}%</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+  </section>
+  {% endif %}
+
+  <p class="disclaimer">Research/educational prototype only. Predictions are not a medical diagnosis and must not replace a qualified clinician or emergency service.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Training Results</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+<header class="topbar"><div><span class="pulse">●</span> Intelligent Ambulance</div><span class="tag">Training Results</span></header>
+<main class="container">
+<section class="hero"><p class="eyebrow">MODEL EVALUATION</p><h1>Training completed</h1><p>{{ result.rows }} rows were processed. Target column: <b>{{ result.target }}</b>.</p></section>
+<section class="card"><h2>Performance on the held-out test set</h2>
+<div class="table-wrap"><table><tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+{% for name, m in result.results.items() %}<tr><td>{{ name }}</td><td>{{ m.accuracy }}%</td><td>{{ m.precision }}%</td><td>{{ m.recall }}%</td><td>{{ m.f1 }}%</td></tr>{% endfor %}
+</table></div></section>
+<a class="button" href="{{ url_for('index') }}">Back to dashboard</a>
+<p class="disclaimer">Metrics describe this dataset/test split only; they do not establish clinical effectiveness.</p>
+</main></body></html>

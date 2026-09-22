@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prediction</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+<header class="topbar"><div><span class="pulse">●</span> Intelligent Ambulance</div><span class="tag">Patient Analysis</span></header>
+<main class="container">
+<section class="hero"><p class="eyebrow">RESEARCH MODEL OUTPUT</p><h1>Patient condition analysis</h1>
+<p>Model outputs are shown side by side for transparency.</p></section>
+<section class="result-grid">
+{% for name, p in result.predictions.items() %}
+<div class="card"><h2>{{ name }}</h2><div class="big">{{ p.class }}</div>{% if p.confidence is not none %}<p>Model confidence: {{ p.confidence }}%</p>{% endif %}</div>
+{% endfor %}
+</section>
+<section class="card"><h2>Model consensus</h2><div class="big">{{ result.consensus }}</div></section>
+<a class="button" href="{{ url_for('index') }}">Return to dashboard</a>
+<p class="disclaimer">This is a software research prototype, not a medical diagnosis or treatment recommendation.</p>
+</main></body></html>

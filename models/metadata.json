@@ -1,0 +1,75 @@
+{
+  "dataset": "demo_heart_dataset.csv",
+  "rows": 240,
+  "columns": 14,
+  "target": "target",
+  "features": [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal"
+  ],
+  "classes": [
+    "0",
+    "1"
+  ],
+  "results": {
+    "SVM": {
+      "accuracy": 87.5,
+      "precision": 76.56,
+      "recall": 87.5,
+      "f1": 81.67,
+      "confusion_matrix": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          42
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 89.58,
+      "precision": 88.06,
+      "recall": 89.58,
+      "f1": 88.03,
+      "confusion_matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          41
+        ]
+      ]
+    },
+    "KNN": {
+      "accuracy": 87.5,
+      "precision": 76.56,
+      "recall": 87.5,
+      "f1": 81.67,
+      "confusion_matrix": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          42
+        ]
+      ]
+    }
+  }
+}
