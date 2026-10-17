@@ -65,7 +65,7 @@ pip install -r requirements.txt
 ### 3. Start the application
 
 ```bash
-python app.py
+python run.py
 ```
 
 Open:
@@ -73,6 +73,29 @@ Open:
 ```text
 http://127.0.0.1:5000
 ```
+
+## Run from GitHub Pages (no personal domain needed)
+
+This project now includes a static GitHub Pages demo that works from a GitHub-hosted URL like:
+
+```text
+https://yourusername.github.io/intelligence-ambulance/
+```
+
+### Steps
+
+1. Push this repository to GitHub.
+2. In GitHub, open the repository.
+3. Go to Settings → Pages.
+4. Set Source to "Deploy from a branch".
+5. Choose the main branch and the root folder.
+6. Save the settings.
+7. GitHub will generate a URL like:
+   ```text
+   https://yourusername.github.io/intelligence-ambulance/
+   ```
+
+This does not require a custom domain. It is a static front-end demo version of the app and does not run the Python ML backend from GitHub Pages.
 
 ### 4. Train the models
 

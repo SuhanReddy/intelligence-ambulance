@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intelligent Ambulance | GitHub Pages Demo</title>
+    <meta
+      name="description"
+      content="A GitHub Pages demo for the Intelligent Ambulance AI dashboard prototype."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div><span class="pulse">●</span> Intelligent Ambulance</div>
+      <span class="tag">GitHub Pages Demo</span>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <p class="eyebrow">EMERGENCY MEDICAL SUPPORT — RESEARCH PROTOTYPE</p>
+        <h1>AI-assisted patient condition analysis</h1>
+        <p>
+          This GitHub-hosted demo lets you run the interface from a GitHub Pages URL
+          without a custom domain or Python server.
+        </p>
+      </section>
+
+      <div class="grid">
+        <section class="card" id="dataset-card">
+          <h2>1. Upload dataset</h2>
+          <p id="dataset-status" class="muted">
+            Loading demo dataset...
+          </p>
+
+          <form id="dataset-form">
+            <label for="csv-file-input">Upload CSV file</label>
+            <input id="csv-file-input" type="file" accept=".csv" />
+            <button type="submit">Load dataset</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>2. Patient prediction</h2>
+          <form id="prediction-form" class="feature-grid">
+            <div id="feature-fields" class="feature-grid wide"></div>
+            <button class="wide" type="submit">Analyze Patient Data</button>
+          </form>
+        </section>
+      </div>
+
+      <section class="card">
+        <h2>Model comparison</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1</th>
+              </tr>
+            </thead>
+            <tbody id="model-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card result-card hidden" id="results-card">
+        <h2>Prediction result</h2>
+        <div class="result-grid">
+          <div>
+            <p class="label">Consensus</p>
+            <div id="consensus-label" class="big">—</div>
+          </div>
+          <div>
+            <p class="label">Confidence</p>
+            <div id="confidence-value" class="big">—</div>
+          </div>
+          <div>
+            <p class="label">Model vote</p>
+            <div id="vote-breakdown" class="big">—</div>
+          </div>
+        </div>
+      </section>
+
+      <p class="disclaimer">
+        Research/educational prototype only. Predictions are not a medical diagnosis and
+        must not replace a qualified clinician or emergency service.
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
